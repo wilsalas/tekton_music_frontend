@@ -1,0 +1,23 @@
+<ul class="list-group">
+  <li class="list-group-item all-categories">
+    <input
+      class="form-check-input me-1"
+      type="checkbox"
+      [checked]="isAllCategoriesChecked()"
+      (change)="checkAllCategories($event)"
+    />
+    All
+  </li>
+  <li
+    class="list-group-item"
+    *ngFor="let category of categories; let i = index"
+  >
+    <input
+      class="form-check-input me-1"
+      type="checkbox"
+      [value]="category.id"
+      [(ngModel)]="categories[i].checked"
+    />
+    {{ category.name }}
+  </li>
+</ul>

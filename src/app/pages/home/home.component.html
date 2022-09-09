@@ -1,0 +1,55 @@
+<div class="container-fluid bg-home">
+  <div class="row vh-100">
+    <div class="col-md-2 col-sidebar">
+      <aside>
+        <h4 class="m-3">
+          Preferences
+          <button
+            type="button"
+            class="btn btn-success rounded-5"
+            (click)="applyFilter()"
+          >
+            Apply
+          </button>
+        </h4>
+        <app-category [categories]="categories"></app-category>
+        <div class="d-grid gap-2">
+          <button
+            class="btn btn-dark rounded-5 mt-4"
+            (click)="applyFilter('', true)"
+          >
+            <app-surprise-me></app-surprise-me>
+          </button>
+        </div>
+      </aside>
+    </div>
+    <div class="col-md-10 p-3">
+      <div class="row">
+        <div class="d-flex" role="search">
+          <input
+            class="form-control me-2 rounded-0 search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            [(ngModel)]="search"
+          />
+          <button
+            class="btn btn-outline-success rounded-5"
+            (click)="applyFilter(search)"
+          >
+            Search
+          </button>
+        </div>
+        <h1 class="text-center mt-5" *ngIf="!loading && !songs.length">
+          No results found
+        </h1>
+        <div
+          *ngIf="loading"
+          class="spinner-border text-light mx-auto mt-5"
+          role="status"
+        ></div>
+        <app-song [autoPlay]="autoPlay" [songs]="songs"></app-song>
+      </div>
+    </div>
+  </div>
+</div>
